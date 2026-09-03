@@ -1,86 +1,83 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { CartProvider } from "./context/CartContext";
+import { AuthProvider } from "./context/AuthContext";
 
 import Home from "./pages/Home";
+import Shop from "./pages/Shop";
 import ProductDetails from "./pages/ProductDetails";
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+import Payment from "./pages/Payment";
+import OrderSuccess from "./pages/OrderSuccess";
 
-function Shop() {
-  return (
-    <div className="min-h-screen bg-gray-100 p-10">
-      <h1 className="text-3xl font-bold">Shop</h1>
-    </div>
-  );
-}
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Profile from "./pages/Profile";
+import OrderHistory from "./pages/OrderHistory";
+import MyBookings from "./pages/MyBookings";
 
-function Cart() {
-  return (
-    <div className="min-h-screen bg-gray-100 p-10">
-      <h1 className="text-3xl font-bold">Cart</h1>
-    </div>
-  );
-}
-
-function Checkout() {
-  return (
-    <div className="min-h-screen bg-gray-100 p-10">
-      <h1 className="text-3xl font-bold">Checkout</h1>
-    </div>
-  );
-}
-
-function Payment() {
-  return (
-    <div className="min-h-screen bg-gray-100 p-10">
-      <h1 className="text-3xl font-bold">Payment</h1>
-    </div>
-  );
-}
-
-function OrderSuccess() {
-  return (
-    <div className="min-h-screen bg-gray-100 p-10">
-      <h1 className="text-3xl font-bold">
-        Order Successful
-      </h1>
-    </div>
-  );
-}
+import Booking from "./pages/Booking";
 
 function App() {
   return (
-    <CartProvider>
-      <BrowserRouter>
-        <Routes>
-          {/* Home */}
-          <Route path="/" element={<Home />} />
+    <AuthProvider>
+      <CartProvider>
+        <BrowserRouter>
+          <Routes>
+            {/* Main Shopping Pages */}
+            <Route path="/" element={<Home />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route
+              path="/product/:id"
+              element={<ProductDetails />}
+            />
 
-          {/* Shop */}
-          <Route path="/shop" element={<Shop />} />
+            {/* Cart & Checkout */}
+            <Route path="/cart" element={<Cart />} />
+            <Route
+              path="/checkout"
+              element={<Checkout />}
+            />
+            <Route
+              path="/payment"
+              element={<Payment />}
+            />
+            <Route
+              path="/order-success"
+              element={<OrderSuccess />}
+            />
 
-          {/* Product Details */}
-          <Route
-            path="/product/:id"
-            element={<ProductDetails />}
-          />
+            {/* Authentication */}
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="/register"
+              element={<Register />}
+            />
 
-          {/* Cart */}
-          <Route path="/cart" element={<Cart />} />
-
-          {/* Checkout */}
-          <Route path="/checkout" element={<Checkout />} />
-
-          {/* Payment */}
-          <Route path="/payment" element={<Payment />} />
-
-          {/* Order Success */}
-          <Route
-            path="/order-success"
-            element={<OrderSuccess />}
-          />
-        </Routes>
-      </BrowserRouter>
-    </CartProvider>
+            {/* User */}
+            <Route
+              path="/profile"
+              element={<Profile />}
+            />
+            <Route
+              path="/orders"
+              element={<OrderHistory />}
+            />
+            <Route
+            path="/bookings"
+            element={<MyBookings />}
+            />
+            {/* Booking */}
+            <Route
+              path="/booking"
+              element={<Booking />}
+              
+            />
+          </Routes>
+        </BrowserRouter>
+      </CartProvider>
+    </AuthProvider>
   );
 }
 
