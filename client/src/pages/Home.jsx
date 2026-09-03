@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   ArrowRight,
   CalendarDays,
@@ -7,11 +6,11 @@ import {
   Mail,
   Star,
 } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Navbar from "../components/Navbar";
-import ProductCard from "../components/ProductCard";
 import api from "../services/api";
+import ProductCard from "../components/ProductCard";
 
 function Home() {
   const navigate = useNavigate();
@@ -39,150 +38,202 @@ function Home() {
   const categories = [
     {
       name: "Men",
-      description: "Modern essentials",
+      description: "Modern essentials for every day",
       image: "/images/shirt.png",
-      link: "/shop?category=Men",
     },
     {
       name: "Women",
-      description: "Effortless style",
+      description: "Effortless styles made to stand out",
       image: "/images/dress.png",
-      link: "/shop?category=Women",
     },
     {
       name: "Footwear",
-      description: "Step into style",
+      description: "Step into comfort and confidence",
       image: "/images/shoes.png",
-      link: "/shop?category=Footwear",
     },
     {
       name: "Accessories",
-      description: "Complete your look",
+      description: "Complete your look with details",
       image: "/images/watch.png",
-      link: "/shop?category=Accessories",
     },
   ];
 
   const testimonials = [
     {
-      name: "Ananya Sharma",
+      name: "Aarav Mehta",
+      text: "The quality is excellent and the shopping experience feels incredibly smooth.",
       rating: 5,
-      text: "Beautiful products, smooth shopping experience, and fast delivery.",
     },
     {
-      name: "Rahul Mehta",
+      name: "Riya Sharma",
+      text: "QuickBuy has become my go-to place for modern everyday fashion.",
       rating: 5,
-      text: "The quality is excellent and the overall experience feels premium.",
     },
     {
-      name: "Priya Kapoor",
+      name: "Kabir Joshi",
+      text: "Great products, clean design and a really convenient checkout experience.",
       rating: 5,
-      text: "I loved the collection. Finding and ordering products was very easy.",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
+    <div className="bg-[#F7F7F5] text-[#172033]">
 
-      {/* HERO SECTION */}
-      <section className="relative overflow-hidden bg-gray-100">
-        <div className="mx-auto grid min-h-[650px] max-w-7xl items-center gap-10 px-6 py-16 lg:grid-cols-2 lg:py-20">
+      {/* =========================
+          HERO SECTION
+      ========================== */}
+      <section
+        className="relative overflow-hidden bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/images/hero-bg.png')",
+        }}
+      >
+        {/* Background overlay */}
+        <div className="absolute inset-0 bg-white/70" />
+
+        {/* Hero content */}
+        <div className="relative mx-auto grid min-h-[650px] max-w-7xl items-center gap-10 px-6 py-16 lg:grid-cols-2 lg:py-20">
+
+          {/* LEFT SIDE */}
           <div className="max-w-xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-gray-500">
-              New Collection 2026
-            </p>
 
-            <h1 className="mt-5 text-5xl font-bold leading-[1.05] tracking-tight text-gray-900 sm:text-6xl lg:text-7xl">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#2A9D8F]/20 bg-white/80 px-4 py-2 text-sm font-semibold text-[#2A9D8F] backdrop-blur">
+              <CheckCircle size={16} />
+              Curated fashion. Made simple.
+            </div>
+
+            <h1 className="text-5xl font-extrabold leading-[1.05] tracking-[-0.04em] text-[#172033] sm:text-6xl lg:text-7xl">
               Style that
-              <br />
-              speaks for
-              <br />
-              itself.
+              <span className="block text-[#2A9D8F]">
+                moves with you.
+              </span>
             </h1>
 
-            <p className="mt-6 max-w-lg text-lg leading-8 text-gray-600">
-              Discover thoughtfully designed essentials,
-              premium footwear and timeless accessories
-              made for everyday living.
+            <p className="mt-6 max-w-lg text-base leading-7 text-[#5F6878] sm:text-lg">
+              Discover thoughtfully selected fashion, footwear and
+              accessories designed to make everyday style effortless.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <button
                 onClick={() => navigate("/shop")}
-                className="flex items-center justify-center gap-2 rounded-lg bg-black px-7 py-4 text-sm font-semibold text-white transition hover:bg-gray-800"
+                className="group flex items-center justify-center gap-2 rounded-full bg-[#172033] px-7 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#24304A] hover:shadow-lg"
               >
-                Shop Collection
-                <ArrowRight size={18} />
+                Shop collection
+                <ArrowRight
+                  size={18}
+                  className="transition-transform group-hover:translate-x-1"
+                />
               </button>
 
               <button
                 onClick={() => navigate("/booking")}
-                className="flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-7 py-4 text-sm font-semibold text-gray-900 transition hover:border-black"
+                className="flex items-center justify-center gap-2 rounded-full border border-[#172033]/15 bg-white/80 px-7 py-3.5 text-sm font-semibold text-[#172033] backdrop-blur transition hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
               >
                 <CalendarDays size={18} />
-                Book Appointment
+                Book an appointment
               </button>
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-6 text-sm text-gray-500">
+            {/* Trust indicators */}
+            <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 text-sm text-[#5F6878]">
               <div className="flex items-center gap-2">
-                <CheckCircle size={17} />
-                Premium Quality
+                <CheckCircle
+                  size={17}
+                  className="text-[#2E8B57]"
+                />
+                Secure checkout
               </div>
 
               <div className="flex items-center gap-2">
-                <CheckCircle size={17} />
-                Secure Checkout
+                <CheckCircle
+                  size={17}
+                  className="text-[#2E8B57]"
+                />
+                Premium quality
               </div>
 
               <div className="flex items-center gap-2">
-                <CheckCircle size={17} />
-                Easy Shopping
+                <CheckCircle
+                  size={17}
+                  className="text-[#2E8B57]"
+                />
+                Easy returns
               </div>
             </div>
           </div>
 
+          {/* RIGHT SIDE IMAGE */}
           <div className="relative">
-            <div className="overflow-hidden rounded-3xl bg-white">
+
+            <div className="w-full max-w-md overflow-hidden rounded-[2rem] border border-white/80 bg-white/80 shadow-2xl backdrop-blur-sm">
               <img
                 src="/images/dress.png"
                 alt="Featured collection"
-                className="h-[520px] w-full object-cover transition duration-500 hover:scale-105"
+                className="h-[300px] w-full object-cover transition duration-500 hover:scale-105"
               />
             </div>
 
-            <div className="absolute bottom-6 left-6 rounded-xl bg-white/95 p-5 shadow-lg backdrop-blur">
-              <p className="text-xs font-medium uppercase tracking-widest text-gray-500">
-                Featured
+            {/* Floating rating card */}
+            <div className="absolute -bottom-5 -left-5 hidden rounded-2xl border border-gray-200 bg-white p-4 shadow-xl sm:block">
+              <div className="flex items-center gap-1 text-[#2A9D8F]">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <Star
+                    key={star}
+                    size={15}
+                    className="fill-current"
+                  />
+                ))}
+              </div>
+
+              <p className="mt-2 text-sm font-bold text-[#172033]">
+                Loved by shoppers
               </p>
 
-              <p className="mt-1 font-semibold text-gray-900">
-                Discover the collection
+              <p className="mt-0.5 text-xs text-[#5F6878]">
+                Quality you can count on
+              </p>
+            </div>
+
+            {/* Floating collection card */}
+            <div className="absolute -right-4 top-8 hidden rounded-2xl border border-white/80 bg-white/90 px-5 py-4 shadow-xl backdrop-blur sm:block">
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#5F6878]">
+                New collection
+              </p>
+
+              <p className="mt-1 text-lg font-bold text-[#172033]">
+                Everyday Essentials
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CATEGORIES */}
+      {/* =========================
+          CATEGORIES
+      ========================== */}
       <section className="mx-auto max-w-7xl px-6 py-20">
-        <div className="mb-10 flex items-end justify-between gap-6">
+
+        <div className="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
-            <p className="text-sm font-medium uppercase tracking-widest text-gray-500">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#2A9D8F]">
               Explore
             </p>
 
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Shop by Category
+            <h2 className="mt-2 text-3xl font-bold tracking-tight text-[#172033] sm:text-4xl">
+              Shop by category
             </h2>
+
+            <p className="mt-3 max-w-xl text-[#5F6878]">
+              Find pieces that fit your style, occasion and everyday routine.
+            </p>
           </div>
 
           <button
             onClick={() => navigate("/shop")}
-            className="hidden items-center gap-2 text-sm font-semibold text-gray-900 sm:flex"
+            className="flex items-center gap-2 text-sm font-semibold text-[#172033] transition hover:text-[#2A9D8F]"
           >
-            View All
+            View all
             <ArrowRight size={17} />
           </button>
         </div>
@@ -191,66 +242,96 @@ function Home() {
           {categories.map((category) => (
             <button
               key={category.name}
-              onClick={() => navigate(category.link)}
-              className="group text-left"
+              onClick={() =>
+                navigate(
+                  `/shop?category=${
+                    category.name === "Accessories"
+                      ? "Accessories"
+                      : category.name
+                  }`
+                )
+              }
+              className="group overflow-hidden rounded-3xl bg-white text-left shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
-              <div className="overflow-hidden rounded-2xl bg-gray-100">
+              <div className="h-72 overflow-hidden bg-gray-100">
                 <img
                   src={category.image}
                   alt={category.name}
-                  className="h-80 w-full object-cover transition duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 />
               </div>
 
-              <div className="mt-4 flex items-center justify-between">
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    {category.name}
-                  </h3>
+              <div className="p-5">
+                <h3 className="text-lg font-bold text-[#172033]">
+                  {category.name}
+                </h3>
 
-                  <p className="mt-1 text-sm text-gray-500">
-                    {category.description}
-                  </p>
+                <p className="mt-1 text-sm leading-6 text-[#5F6878]">
+                  {category.description}
+                </p>
+
+                <div className="mt-4 flex items-center gap-2 text-sm font-semibold text-[#2A9D8F]">
+                  Explore
+                  <ArrowRight
+                    size={16}
+                    className="transition-transform group-hover:translate-x-1"
+                  />
                 </div>
-
-                <ArrowRight
-                  size={19}
-                  className="text-gray-400 transition group-hover:translate-x-1 group-hover:text-black"
-                />
               </div>
             </button>
           ))}
         </div>
       </section>
 
-      {/* FEATURED PRODUCTS */}
-      <section className="bg-gray-50">
+      {/* =========================
+          FEATURED PRODUCTS
+      ========================== */}
+      <section className="border-y border-gray-200/80 bg-white">
+
         <div className="mx-auto max-w-7xl px-6 py-20">
-          <div className="mb-10 flex items-end justify-between gap-6">
+
+          <div className="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
-              <p className="text-sm font-medium uppercase tracking-widest text-gray-500">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#2A9D8F]">
                 Curated for you
               </p>
 
-              <h2 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                Featured Products
+              <h2 className="mt-2 text-3xl font-bold tracking-tight text-[#172033] sm:text-4xl">
+                Featured products
               </h2>
+
+              <p className="mt-3 max-w-xl text-[#5F6878]">
+                A few of our most-loved pieces, selected for effortless
+                everyday style.
+              </p>
             </div>
 
             <button
               onClick={() => navigate("/shop")}
-              className="hidden items-center gap-2 text-sm font-semibold text-gray-900 sm:flex"
+              className="flex items-center gap-2 text-sm font-semibold text-[#172033] transition hover:text-[#2A9D8F]"
             >
-              View All
+              Shop all products
               <ArrowRight size={17} />
             </button>
           </div>
 
           {loading ? (
-            <div className="flex min-h-[300px] items-center justify-center">
-              <p className="text-gray-500">
-                Loading products...
-              </p>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {[1, 2, 3, 4].map((item) => (
+                <div
+                  key={item}
+                  className="overflow-hidden rounded-2xl bg-[#F7F7F5]"
+                >
+                  <div className="h-64 animate-pulse bg-gray-200" />
+
+                  <div className="space-y-3 p-5">
+                    <div className="h-3 w-20 animate-pulse rounded bg-gray-200" />
+                    <div className="h-5 w-36 animate-pulse rounded bg-gray-200" />
+                    <div className="h-4 w-16 animate-pulse rounded bg-gray-200" />
+                    <div className="h-6 w-24 animate-pulse rounded bg-gray-200" />
+                  </div>
+                </div>
+              ))}
             </div>
           ) : featuredProducts.length > 0 ? (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -265,190 +346,229 @@ function Home() {
               ))}
             </div>
           ) : (
-            <div className="rounded-2xl bg-white p-12 text-center">
-              <p className="text-gray-500">
-                No products available.
+            <div className="rounded-3xl border border-gray-200 bg-[#F7F7F5] p-10 text-center">
+              <p className="font-semibold text-[#172033]">
+                No products available right now.
+              </p>
+
+              <p className="mt-2 text-sm text-[#5F6878]">
+                Please check back soon.
               </p>
             </div>
           )}
-
-          <button
-            onClick={() => navigate("/shop")}
-            className="mx-auto mt-10 flex items-center gap-2 rounded-lg bg-black px-7 py-3 font-medium text-white transition hover:bg-gray-800 sm:hidden"
-          >
-            View All Products
-            <ArrowRight size={18} />
-          </button>
         </div>
       </section>
 
-      {/* APPOINTMENT BANNER */}
+      {/* =========================
+          APPOINTMENT BANNER
+      ========================== */}
       <section className="mx-auto max-w-7xl px-6 py-20">
-        <div className="overflow-hidden rounded-3xl bg-black">
-          <div className="grid items-center lg:grid-cols-2">
-            <div className="p-8 text-white sm:p-12 lg:p-16">
-              <p className="text-sm font-medium uppercase tracking-widest text-gray-400">
-                Personal Experience
-              </p>
 
-              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
-                Need help finding the perfect style?
+        <div className="relative overflow-hidden rounded-[2rem] bg-[#172033] px-7 py-12 sm:px-12 lg:px-16">
+
+          <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#2A9D8F]/20 blur-3xl" />
+
+          <div className="absolute -bottom-20 left-1/3 h-64 w-64 rounded-full bg-[#2A9D8F]/10 blur-3xl" />
+
+          <div className="relative flex flex-col justify-between gap-8 lg:flex-row lg:items-center">
+
+            <div className="max-w-2xl">
+
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white">
+                <CalendarDays size={17} />
+                Personal styling
+              </div>
+
+              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                Want a more personal shopping experience?
               </h2>
 
-              <p className="mt-5 max-w-xl leading-7 text-gray-300">
-                Book an appointment and get personalized
-                assistance from our team.
+              <p className="mt-4 max-w-xl leading-7 text-white/70">
+                Book an appointment with our team and get help finding
+                pieces that match your style and preferences.
               </p>
-
-              <button
-                onClick={() => navigate("/booking")}
-                className="mt-8 flex items-center gap-2 rounded-lg bg-white px-7 py-3.5 text-sm font-semibold text-black transition hover:bg-gray-200"
-              >
-                Book an Appointment
-                <ArrowRight size={17} />
-              </button>
             </div>
 
-            <div className="hidden h-full min-h-[360px] lg:block">
-              <img
-                src="/images/bag.png"
-                alt="Personal shopping experience"
-                className="h-full w-full object-cover"
+            <button
+              onClick={() => navigate("/booking")}
+              className="group flex shrink-0 items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[#172033] transition hover:-translate-y-0.5 hover:bg-[#E4F3F0] hover:shadow-lg"
+            >
+              Book appointment
+              <ArrowRight
+                size={18}
+                className="transition-transform group-hover:translate-x-1"
               />
-            </div>
+            </button>
           </div>
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="bg-gray-50">
+      {/* =========================
+          TESTIMONIALS
+      ========================== */}
+      <section className="border-y border-gray-200/80 bg-white">
+
         <div className="mx-auto max-w-7xl px-6 py-20">
-          <div className="text-center">
-            <p className="text-sm font-medium uppercase tracking-widest text-gray-500">
-              Customer Stories
+
+          <div className="mx-auto mb-12 max-w-2xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#2A9D8F]">
+              Customer stories
             </p>
 
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              What our customers say
+            <h2 className="mt-2 text-3xl font-bold tracking-tight text-[#172033] sm:text-4xl">
+              What our shoppers say
             </h2>
+
+            <p className="mt-3 text-[#5F6878]">
+              Real experiences from people who shop with QuickBuy.
+            </p>
           </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-3">
             {testimonials.map((testimonial) => (
               <div
                 key={testimonial.name}
-                className="rounded-2xl bg-white p-7 shadow-sm"
+                className="rounded-3xl border border-gray-200 bg-[#F7F7F5] p-7"
               >
-                <div className="flex gap-1">
-                  {Array.from({
-                    length: testimonial.rating,
-                  }).map((_, index) => (
+                <div className="flex gap-1 text-[#2A9D8F]">
+                  {[...Array(testimonial.rating)].map((_, index) => (
                     <Star
                       key={index}
                       size={17}
-                      className="fill-current text-black"
+                      className="fill-current"
                     />
                   ))}
                 </div>
 
-                <p className="mt-5 leading-7 text-gray-600">
-                  "{testimonial.text}"
+                <p className="mt-5 text-base leading-7 text-[#5F6878]">
+                  “{testimonial.text}”
                 </p>
 
-                <p className="mt-6 font-semibold text-gray-900">
-                  {testimonial.name}
-                </p>
+                <div className="mt-6 flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#E4F3F0] text-sm font-bold text-[#2A9D8F]">
+                    {testimonial.name.charAt(0)}
+                  </div>
+
+                  <div>
+                    <p className="text-sm font-bold text-[#172033]">
+                      {testimonial.name}
+                    </p>
+
+                    <p className="text-xs text-[#5F6878]">
+                      Verified shopper
+                    </p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* NEWSLETTER */}
+      {/* =========================
+          NEWSLETTER
+      ========================== */}
       <section className="mx-auto max-w-7xl px-6 py-20">
-        <div className="rounded-3xl border border-gray-200 bg-white p-8 text-center sm:p-12">
-          <Mail
-            size={30}
-            className="mx-auto text-gray-700"
-          />
 
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-gray-900">
-            Stay in the loop
-          </h2>
+        <div className="rounded-[2rem] border border-gray-200 bg-[#E4F3F0] px-7 py-12 sm:px-12">
 
-          <p className="mx-auto mt-3 max-w-xl text-gray-500">
-            Get updates about new collections, exclusive
-            offers and the latest arrivals.
-          </p>
+          <div className="mx-auto max-w-2xl text-center">
 
-          <form
-            onSubmit={(event) => {
-              event.preventDefault();
-              alert("Thank you for subscribing!");
-            }}
-            className="mx-auto mt-7 flex max-w-lg flex-col gap-3 sm:flex-row"
-          >
-            <input
-              type="email"
-              required
-              placeholder="Enter your email"
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm outline-none focus:border-black"
-            />
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#2A9D8F] shadow-sm">
+              <Mail size={21} />
+            </div>
 
-            <button
-              type="submit"
-              className="rounded-lg bg-black px-7 py-3 text-sm font-semibold text-white transition hover:bg-gray-800"
+            <h2 className="mt-5 text-3xl font-bold tracking-tight text-[#172033]">
+              Stay in the loop
+            </h2>
+
+            <p className="mt-3 text-[#5F6878]">
+              Get updates about new collections, special offers and
+              the latest from QuickBuy.
+            </p>
+
+            <form
+              onSubmit={(event) => event.preventDefault()}
+              className="mx-auto mt-7 flex max-w-lg flex-col gap-3 sm:flex-row"
             >
-              Subscribe
-            </button>
-          </form>
+              <div className="flex h-12 flex-1 items-center rounded-full border border-gray-200 bg-white px-4">
+                <Mail
+                  size={17}
+                  className="mr-2 shrink-0 text-gray-400"
+                />
+
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="w-full bg-transparent text-sm text-[#172033] outline-none placeholder:text-gray-400"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="h-12 rounded-full bg-[#172033] px-6 text-sm font-semibold text-white transition hover:bg-[#24304A]"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="border-t border-gray-200 bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-12">
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            {/* BRAND */}
-            <div>
-              <h3 className="text-xl font-bold text-gray-900">
-                QuickBuy!
-              </h3>
+      {/* =========================
+          FOOTER
+      ========================== */}
+      <footer className="border-t border-gray-200 bg-[#172033] text-white">
 
-              <p className="mt-4 max-w-xs text-sm leading-6 text-gray-500">
-                Thoughtfully designed products for modern
-                everyday living.
+        <div className="mx-auto max-w-7xl px-6 py-14">
+
+          <div className="grid gap-10 md:grid-cols-4">
+
+            {/* Brand */}
+            <div className="md:col-span-2">
+
+              <button
+                onClick={() => navigate("/")}
+                className="group"
+              >
+                <span className="text-2xl font-extrabold tracking-[-0.04em]">
+                  QuickBuy
+                </span>
+
+                <span className="text-2xl font-extrabold text-[#2A9D8F]">
+                  !
+                </span>
+              </button>
+
+              <p className="mt-4 max-w-md text-sm leading-6 text-white/60">
+                A modern shopping experience built around quality,
+                simplicity and everyday style.
               </p>
 
-              <div className="mt-5 flex gap-3">
-                <button
-                  aria-label="Instagram"
-                  className="rounded-full border border-gray-200 p-2.5 text-gray-600 transition hover:border-black hover:text-black"
-                >
-                  <Camera size={18} />
-                </button>
+              <div className="mt-5 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white/70 transition hover:bg-white/15 hover:text-white">
+                <Camera size={18} />
               </div>
             </div>
 
-            {/* SHOP */}
+            {/* Shop */}
             <div>
-              <h4 className="font-semibold text-gray-900">
+              <h3 className="text-sm font-semibold">
                 Shop
-              </h4>
+              </h3>
 
-              <div className="mt-4 space-y-3 text-sm text-gray-500">
+              <div className="mt-4 space-y-3 text-sm text-white/60">
                 <button
                   onClick={() => navigate("/shop")}
-                  className="block transition hover:text-black"
+                  className="block transition hover:text-white"
                 >
-                  All Products
+                  All products
                 </button>
 
                 <button
                   onClick={() =>
                     navigate("/shop?category=Men")
                   }
-                  className="block transition hover:text-black"
+                  className="block transition hover:text-white"
                 >
                   Men
                 </button>
@@ -457,78 +577,69 @@ function Home() {
                   onClick={() =>
                     navigate("/shop?category=Women")
                   }
-                  className="block transition hover:text-black"
+                  className="block transition hover:text-white"
                 >
                   Women
                 </button>
 
                 <button
                   onClick={() =>
-                    navigate(
-                      "/shop?category=Accessories"
-                    )
+                    navigate("/shop?category=Accessories")
                   }
-                  className="block transition hover:text-black"
+                  className="block transition hover:text-white"
                 >
                   Accessories
                 </button>
               </div>
             </div>
 
-            {/* ACCOUNT */}
+            {/* Account */}
             <div>
-              <h4 className="font-semibold text-gray-900">
+              <h3 className="text-sm font-semibold">
                 Account
-              </h4>
+              </h3>
 
-              <div className="mt-4 space-y-3 text-sm text-gray-500">
+              <div className="mt-4 space-y-3 text-sm text-white/60">
+
                 <button
                   onClick={() => navigate("/profile")}
-                  className="block transition hover:text-black"
+                  className="block transition hover:text-white"
                 >
-                  My Profile
+                  Profile
                 </button>
 
                 <button
                   onClick={() => navigate("/orders")}
-                  className="block transition hover:text-black"
+                  className="block transition hover:text-white"
                 >
-                  My Orders
+                  My orders
                 </button>
 
                 <button
                   onClick={() => navigate("/bookings")}
-                  className="block transition hover:text-black"
+                  className="block transition hover:text-white"
                 >
-                  My Bookings
+                  My bookings
                 </button>
 
                 <button
                   onClick={() => navigate("/booking")}
-                  className="block transition hover:text-black"
+                  className="block transition hover:text-white"
                 >
-                  Book Appointment
+                  Appointments
                 </button>
-              </div>
-            </div>
-
-            {/* SUPPORT */}
-            <div>
-              <h4 className="font-semibold text-gray-900">
-                Support
-              </h4>
-
-              <div className="mt-4 space-y-3 text-sm text-gray-500">
-                <p>Customer Support</p>
-                <p>Shipping & Returns</p>
-                <p>Privacy Policy</p>
-                <p>Terms & Conditions</p>
               </div>
             </div>
           </div>
 
-          <div className="mt-10 border-t border-gray-200 pt-6 text-center text-sm text-gray-500">
-            © 2026 QuickBuy!. All rights reserved.
+          <div className="mt-12 flex flex-col justify-between gap-4 border-t border-white/10 pt-7 text-xs text-white/40 sm:flex-row">
+            <p>
+              © 2026 QuickBuy! All rights reserved.
+            </p>
+
+            <p>
+              Built for the e-commerce hackathon.
+            </p>
           </div>
         </div>
       </footer>

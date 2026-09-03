@@ -36,11 +36,16 @@ const register = async (req, res) => {
     const [result] = await pool.query(
       `
       INSERT INTO users
-        (name, email, password)
+        (name, email, password, role)
       VALUES
-        (?, ?, ?)
+        (?, ?, ?, ?)
       `,
-      [name.trim(), normalizedEmail, hashedPassword]
+      [
+        name.trim(),
+        normalizedEmail,
+        hashedPassword,
+        "customer",
+      ]
     );
 
     const userId = result.insertId;
@@ -49,6 +54,7 @@ const register = async (req, res) => {
       {
         userId,
         email: normalizedEmail,
+        role: "customer",
       },
       process.env.JWT_SECRET,
       {
@@ -63,6 +69,7 @@ const register = async (req, res) => {
         id: userId,
         name: name.trim(),
         email: normalizedEmail,
+        role: "customer",
       },
     });
   } catch (error) {
@@ -95,7 +102,8 @@ const login = async (req, res) => {
         id,
         name,
         email,
-        password
+        password,
+        role
       FROM users
       WHERE email = ?
       `,
@@ -125,6 +133,7 @@ const login = async (req, res) => {
       {
         userId: user.id,
         email: user.email,
+        role: user.role,
       },
       process.env.JWT_SECRET,
       {
@@ -139,6 +148,7 @@ const login = async (req, res) => {
         id: user.id,
         name: user.name,
         email: user.email,
+        role: user.role,
       },
     });
   } catch (error) {

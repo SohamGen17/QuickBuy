@@ -18,7 +18,7 @@ import OrderHistory from "./pages/OrderHistory";
 import MyBookings from "./pages/MyBookings";
 
 import Booking from "./pages/Booking";
-
+import AdminDashboard from "./pages/AdminDashboard";
 function App() {
   return (
     <AuthProvider>
@@ -53,6 +53,9 @@ function App() {
             <Route
               path="/register"
               element={<Register />}
+            />
+            <Route path="/admin"
+              element={<AdminDashboard />}
             />
 
             {/* User */}
