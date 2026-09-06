@@ -23,7 +23,7 @@ https://ecommerce-hackathon-eosin.vercel.app/
 https://quickbuy-api.onrender.com
 
 📂 **GitHub Repository:**  
-
+https://github.com/SohamGen17/ecommerce-hackathon.git
 
 ---
 
