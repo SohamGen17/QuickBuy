@@ -1,8 +1,7 @@
 # 👨‍💻 Author
 
 Soham Gengane
-Electronics & Telecommunication Engineering Student
-Full Stack Developer
+>Electronics and Telecommunication Engineering student & a Full-Stack Developer
 
 # 🛒 QuickBuy!
 
