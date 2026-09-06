@@ -139,6 +139,29 @@ flowchart TD
     F -.-> C
     G -.-> D
 ```
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+
+![QuickBuy Home Page](./screenshots/Home.png)
+
+### 🛍️ Shop
+
+![QuickBuy Shop](./screenshots/Shop.png)
+
+### 📦 Collection
+
+![QuickBuy Collection](./screenshots/Collection.png)
+
+### 🛒 Cart
+
+![QuickBuy Cart](./screenshots/Cart.png)
+
+### ⚙️ Admin Dashboard
+
+![QuickBuy Admin Dashboard](./screenshots/Admin.png)
+
 # 🧠 What I Learned
 
 Building QuickBuy! helped me gain practical experience with:
@@ -180,11 +203,11 @@ Docker containerization
 AWS-based deployment
 Improved caching and performance optimization
 
-#🤝 Contributing
+# 🤝 Contributing
 
 This repository is primarily maintained as a portfolio and learning project.
 
 Suggestions, issues, and improvements are welcome.
 
 For major changes, please open an issue first to discuss the proposed changes.
-#⭐ If you found this project useful, consider giving the repository a star.
+# ⭐ If you found this project useful, consider giving the repository a star.
