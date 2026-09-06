@@ -17,7 +17,7 @@ The project follows a modern client-server architecture where the React frontend
 ## 🚀 Live Demo
 
 🌐 **Frontend:**  
-https://ecommerce-hackathon-eosin.vercel.app/
+https://quickbuy-eosin.vercel.app/
 
 🔗 **Backend API:**  
 https://quickbuy-api.onrender.com
